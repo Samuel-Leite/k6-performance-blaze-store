@@ -1,0 +1,22 @@
+{
+    "produtos": [
+        {
+            "id": "5ad4c449-2f7f-d649-8174-a5d08db13c90",
+            "cookie": "dXNlckRlbW8xNzE2NDYz",
+            "prod_id": 1,
+            "flag": true
+        },
+        {
+            "id": "1f21976f-bcd7-5b23-5cc9-1ec578cc7041",
+            "cookie": "dXNlckRlbW8xNzE2NDYz",
+            "prod_id": 2,
+            "flag": true
+        },
+        {
+            "id": "dc22b2e6-b3f0-f115-4f57-db6ec5f3d8bf",
+            "cookie": "dXNlckRlbW8xNzE2NDYz",
+            "prod_id": 3,
+            "flag": true
+        }
+    ]
+}
