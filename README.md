@@ -148,6 +148,8 @@ pipeline {
 ```
 
 ## 📷 Evidências dos reports gerados após execução dos testes:
-Execução dos testes em Pipeline (Jenkins) integrado ao Grafana Cloud
+- Execução dos testes em Pipeline (Jenkins) integrado ao Grafana Cloud
 ![alt text](image-1.png)
 ![alt text](image.png)
+- Execução dos testes no Github Action
+![alt text](image-2.png)
