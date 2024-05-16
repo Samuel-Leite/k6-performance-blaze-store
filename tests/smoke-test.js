@@ -56,6 +56,6 @@ export default function () {
 // desmontagem
 export function handleSummary(data) {
   return {
-    "../report/result_k6.html": htmlReport(data),
+    "result_k6.html": htmlReport(data),
   };
 }

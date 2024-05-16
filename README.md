@@ -55,6 +55,42 @@ K6_WEB_DASHBOARD=true k6 run {nome do arquivo}.js
 K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT={nome relatorio}.html k6 run {nome do arquivo}.js
 ```
 
+## Configuração e execução no Github Action
+Incluir na raiz do projeto as pastas: .github > workflows > {arquivo_configuracao}.yml
+```
+name: K6 load test
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build: 
+    name: K6 load test
+    runs-on: ubuntu-latest
+    steps:
+      - name: step 1 - checkout
+        uses: actions/checkout@v4
+
+      - name: step 2 - run k6 load test
+        uses: grafana/k6-action@v0.3.1
+        with: 
+          filename: tests/smoke-test.js
+
+      - run: ls & mkdir report & mv result_k6.html report
+      
+      - name: step 3 - upload artifact
+        uses: actions/upload-artifact@v4
+        with: 
+          name: relatorio de testes de performance
+          path: report
+          
+      - name: step 4 - publish report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: report
+```
+
 ## Configuração e execução no Grafana Cloud
 Após logar no Grafana Cloud, é necessário obter o token em: Home> Testing & synthetics > Performance > Settings > Personal API token.
 - Após obtido o token, executar na pasta do projeto através do gitbash/powershell
@@ -83,7 +119,7 @@ k6 run --out cloud {nome do arquivo}.js
 
 ## Configuração e execução em Pipeline (Jenkins), integrando ao Grafana Cloud:
 Após logar no Jenkins, acesse: Nova Tarefa > Digita nome da Pipeline > Selecione Pipeline > Preencha os dados abaixo no Script da Pipeline:
-  - No campo Build Triggers > Construir periodicamente > Preencha com a data para ser executado periodicamente
+  - No campo Build Triggers > Construir periodicamente > Preencha com a data para ser executado periodicamente > Após salvar clicar em Construir agora
 
 ```
 pipeline {
@@ -96,13 +132,13 @@ pipeline {
 
     stages {
         
-        stage('Checkout') {
+        stage('Get Source Code') {
             steps {
                 git branch: 'main', url: 'link_repositorio'
             }
         }
         
-        stage('K6') {
+        stage('Run test') {
             steps {
                 bat 'k6 cloud {nome do arquivo}.js --quiet'
             }
@@ -112,3 +148,8 @@ pipeline {
 ```
 
 ## 📷 Evidências dos reports gerados após execução dos testes:
+- Execução dos testes em Pipeline (Jenkins) integrado ao Grafana Cloud
+![alt text](image-1.png)
+![alt text](image.png)
+- Execução dos testes no Github Action
+![alt text](image-2.png)
