@@ -15,7 +15,7 @@ jobs:
         with: 
           filename: tests/smoke-test.js
 
-      - run: ls & mkdir report & mv ../report/result_k6.html report
+      - run: ls & mkdir report & mv result_k6.html report
       
       - name: step 3 - upload artifact
         uses: actions/upload-artifact@v4
