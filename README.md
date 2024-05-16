@@ -57,6 +57,39 @@ K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT={nome relatorio}.html k6 run {nome
 
 ## Configuração e execução no Github Action
 Incluir na raiz do projeto as pastas: .github > workflows > {arquivo_configuracao}.yml
+```
+name: K6 load test
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build: 
+    name: K6 load test
+    runs-on: ubuntu-latest
+    steps:
+      - name: step 1 - checkout
+        uses: actions/checkout@v4
+
+      - name: step 2 - run k6 load test
+        uses: grafana/k6-action@v0.3.1
+        with: 
+          filename: tests/smoke-test.js
+
+      - run: ls & mkdir report & mv result_k6.html report
+      
+      - name: step 3 - upload artifact
+        uses: actions/upload-artifact@v4
+        with: 
+          name: relatorio de testes de performance
+          path: report
+          
+      - name: step 4 - publish report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: report
+```
 
 ## Configuração e execução no Grafana Cloud
 Após logar no Grafana Cloud, é necessário obter o token em: Home> Testing & synthetics > Performance > Settings > Personal API token.
