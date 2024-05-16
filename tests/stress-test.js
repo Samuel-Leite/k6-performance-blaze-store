@@ -20,14 +20,14 @@ export const options = {
 const BASE_URL = "https://api.demoblaze.com";
 
 // configuracao
-const data = new SharedArray("Arquivo dos produtos", function () {
+const data = new SharedArray("Arquivo dos produtos da BlazeStore", function () {
   return JSON.parse(open("../resources/produtos.json")).produtos;
 });
 
 // execucao
 export default function () {
   
-  group("Comprar produtos", function () {
+  group("Compra dos produtos - BlazeStore", function () {
     const produto = data[Math.floor(Math.random() * data.length)];
 
     const payload = JSON.stringify({
@@ -44,11 +44,11 @@ export default function () {
 
     const res = http.post(`${BASE_URL}/addtocart`, payload, params);
     if (res.error) {
-      exec.test.abort("Teste abortado. Aplicação está fora do ar");
+      exec.test.abort("Erro. Aplicação está fora do ar");
     }
 
     check(res, {
-      "Adicionado com sucesso o produto": (r) => r.status === 200,
+      "Adicionado com sucesso o produto da BlazeStore": (r) => r.status === 200,
     });
   });
 
