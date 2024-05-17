@@ -147,6 +147,40 @@ pipeline {
 }
 ```
 
+## 📉 Explicação das métricas do K6:
+- **Checks:** Exibe a porcentagem de verificações (checks) que passaram ou falharam.
+- **Data Received and Data Sent:** Indica a quantidade de dados recebidos e enviados durante os testes.
+- **Group Duration:** Fornece estatísticas sobre o tempo médio, mínimo, mediano, máximo e percentis da duração dos grupos de requisições.
+- **HTTP Request Blocked:** Indica o tempo médio, mínimo, mediano, máximo e percentis que as requisições HTTP esperaram antes de serem enviadas.
+- **HTTP Request Connecting:** Mostra o tempo médio, mínimo, mediano, máximo e percentis que as requisições levaram para estabelecer conexão.
+- **HTTP Request Duration:** Fornece estatísticas sobre o tempo médio, mínimo, mediano, máximo e percentis que as requisições HTTP demoraram para serem concluídas.
+- **HTTP Request Failed:** Indica a porcentagem de falhas nas requisições HTTP.
+- **HTTP Request Receiving:** Mostra o tempo médio, mínimo, mediano, máximo e percentis que as requisições levaram para receber resposta.
+- **HTTP Request Sending:** Indica o tempo médio, mínimo, mediano, máximo e percentis que as requisições levaram para serem enviadas.
+- **HTTP Request TLS Handshaking:** Mostra o tempo médio, mínimo, mediano, máximo e percentis que as requisições levaram para realizar o handshake do TLS.
+- **HTTP Request Waiting:** Fornece estatísticas sobre o tempo médio, mínimo, mediano, máximo e percentis que as requisições levaram para esperar uma resposta após serem enviadas.
+- **HTTP Requests:** Indica o número total de requisições HTTP feitas e a taxa de requisições por segundo.
+- **browser_data_received:** Quantidade de dados recebidos pelo navegador durante o teste, com taxas em kilobytes por segundo (kB/s).
+- **browser_data_sent:** Quantidade de dados enviados pelo navegador durante o teste, com taxas em kilobytes por segundo (kB/s).
+- **browser_http_req_duration:** Fornece estatísticas sobre a duração das requisições HTTP iniciadas pelo navegador, incluindo mínimo, mediana, média, máximo e diversos percentis.
+- **browser_http_req_failed:** Indica a porcentagem de falhas nas requisições HTTP iniciadas pelo navegador.
+- **browser_web_vital_cls:** Fornece estatísticas sobre a métrica de Layout Cumulativo (CLS) do navegador, incluindo mínimo, mediana, média, máximo e diversos percentis.
+- **browser_web_vital_fcp:** Fornece estatísticas sobre a métrica de Primeira Pintura de Conteúdo (FCP) do navegador, incluindo mínimo, mediana, média, máximo e diversos percentis.
+- **browser_web_vital_fid:** Fornece estatísticas sobre a métrica de Primeiro Atraso de Entrada (FID) do navegador, incluindo mínimo, mediana, média, máximo e diversos percentis.
+- **browser_web_vital_inp:** Fornece estatísticas sobre a métrica de Tempo de Entrada (INP) do navegador, incluindo mínimo, mediana, média, máximo e diversos percentis.
+- **browser_web_vital_lcp:** Fornece estatísticas sobre a métrica de Maior Pintura de Conteúdo (LCP) do navegador, incluindo mínimo, mediana, média, máximo e diversos percentis.
+- **browser_web_vital_ttfb:** Fornece estatísticas sobre a métrica de Tempo até o Primeiro Byte (TTFB) do navegador, incluindo mínimo, mediana, média, máximo e diversos percentis.
+- **Iteration Duration:** Mostra o tempo médio, mínimo, mediano, máximo e percentis que as iterações dos testes levaram para serem concluídas.
+- **Iterations:** Indica o número total de iterações e a taxa de iterações por segundo.
+- **VUs (Virtual Users):** Mostra o número atual, mínimo e máximo de VUs (usuários virtuais) ativos durante os testes.
+- **VUs Max:** Indica o número máximo de VUs que foram usados durante os testes.
+- **min:** O tempo mínimo registrado para o evento ocorrer.
+- **med:** A mediana, ou seja, o ponto médio dos valores observados. Metade dos valores está acima desse ponto e a outra metade está abaixo.
+- **avg:** A média aritmética dos valores observados.
+- **max:** O tempo máximo registrado para o evento ocorrer. 
+- **p(95):** Este é o percentil 95, o que significa que 95% dos tempos de resposta estão abaixo desse valor. Em outras palavras, apenas 5% dos tempos de resposta são maiores que o valor do percentil p(95). Isso pode ajudar a entender como a maioria das requisições se comporta em relação ao tempo de resposta.
+- **p(99):** Este é o percentil 99, indicando que 99% dos tempos de resposta estão abaixo desse valor. Apenas 1% dos tempos de resposta são maiores que o valor do percentil p(99). Isso é útil para identificar casos extremos ou incomuns em sua distribuição de tempos de resposta.
+
 ## 📷 Evidências dos reports gerados após execução dos testes:
 - Execução dos testes em Pipeline (Jenkins) integrado ao Grafana Cloud
 ![alt text](image-1.png)
